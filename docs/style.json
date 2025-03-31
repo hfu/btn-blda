@@ -1,0 +1,68 @@
+{
+  "version": 8,
+  "zoom": 14.68,
+  "center": [
+    89.636,
+    27.474
+  ],
+  "sources": {
+    "a": {
+      "type": "vector",
+      "url": "pmtiles://a.pmtiles",
+      "attribution": "Bhutan NSDI (NLCS and DHS)"
+    }
+  },
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "#000"
+      }
+    },
+    {
+      "id": "dhs",
+      "source-layer": "dhs",
+      "source": "a",
+      "type": "fill",
+      "paint": {
+        "fill-color": "rgba(0, 255, 0, 0.5)",
+        "fill-opacity": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          0,
+          12.5,
+          0.5
+        ]
+      }
+    },
+    {
+      "id": "nlcs",
+      "source-layer": "nlcs",
+      "source": "a",
+      "type": "fill",
+      "paint": {
+        "fill-color": "rgba(0, 0, 255, 0.5)",
+        "fill-opacity": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          0,
+          12.5,
+          0.5
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<style>
+body { margin: 0; padding: 0; font-family: 'Geist Mono', monospace; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+#bottom { position: absolute; overflow: auto; bottom: 0px; width: 100%; font-size: large;
+  text-align: center; color: #ccc; background-color: rgba(0, 0, 0, 40%);}
+#grid { color: #888; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@^5.1.0/dist/maplibre-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pmtiles@^3.2.0/dist/pmtiles.js"></script>
+<link href="https://cdn.jsdelivr.net/npm//maplibre-gl@^5.1.0/dist/maplibre-gl.css" rel="stylesheet" />
+</head>
+<body>
+<div id="map"></div>
+<div id="bottom">Bhutan buildings from NLCS and DHS</div>
+<script> 
+maplibregl.addProtocol('pmtiles', (new pmtiles.Protocol()).tile)
+
+;(async () => {
+  const style = await fetch('style.json').then(resp => resp.json())
+  const map = new maplibregl.Map({
+    container: 'map', style: style, hash: true
+  })
+})()
+</script>
+</body>
+</html>
+  

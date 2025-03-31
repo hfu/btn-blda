@@ -1,0 +1,38 @@
+hidden pmtiles = "pmtiles://a.pmtiles"
+hidden background_color = "#000"
+
+class Blda {
+  id: String? `source-layer` = id
+  source = "a" type = "fill" hidden c = background_color
+  paint {
+    `fill-color` = c
+    `fill-opacity` = new {
+      "interpolate"
+      new { "linear" }
+      new { "zoom" }
+      12 0
+      12.5 0.5
+    }
+  }
+}
+
+version = 8
+zoom = 14.68
+center = new Listing {
+  89.636
+  27.474
+}
+sources {
+  a {
+    type = "vector" url = pmtiles
+    attribution = "Bhutan NSDI (NLCS and DHS)"
+  }
+}
+layers = new Listing {
+  new {
+    id = "background" type = "background"
+    paint { `background-color` = background_color }
+  }
+  new Blda { id = "dhs" c = "rgba(0, 255, 0, 0.5)" }
+  new Blda { id = "nlcs" c = "rgba(0, 0, 255, 0.5)"}
+}
